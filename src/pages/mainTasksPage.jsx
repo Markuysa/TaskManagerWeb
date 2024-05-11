@@ -23,7 +23,9 @@ const TaskListPage = () => {
 
     return (
         <div>
-            <HeaderContent username={username} />
+            <div className="header_wrap">
+                <HeaderContent username={username}/>
+            </div>
             <div className="tasksPageContent">
                 <div className="aside">
                     <ul className="aside-list">
@@ -35,7 +37,9 @@ const TaskListPage = () => {
                     <TaskList/>
                 </div>
             </div>
-            {/*<Footer/>*/}
+            <div className="footer_wrap">
+                <Footer/>
+            </div>
         </div>
     );
 };

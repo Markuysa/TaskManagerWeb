@@ -8,17 +8,23 @@
   flex-direction: row;
 }
 
+.header_wrap{
+  display: block;
+}
+
 .tasksPageContent .aside {
   background: rgba(228, 212, 228, 0.71);
   width: 15%;
   height: 100%;
+
 }
 
 .tasksPageContent .tasks_list{
   width: 85vw;
   padding: 20px;
-  /*height: fit-content;*/
-  margin-left: 15%; /* add left margin */
+  height: fit-content;
+  display: flex;
+    flex-direction: column;
 }
 
 .tasksPageContent .aside .aside-list {
@@ -46,4 +52,10 @@
 }
 
 .tasksPageContent .task-list{
+  max-height: 96vh;
+  overflow-y: auto;
+}
+
+.footer_wrap{
+  bottom: 0;
 }
