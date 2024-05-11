@@ -1,8 +1,8 @@
 
 
 import React, { Component }  from 'react';
-import '../../css/components/footer.css'
-import Logotype from '../../ui/logotype/logotype';
+import '../../../css/components/footer.css'
+import Logotype from '../../../ui/logotype/logotype';
 const Footer = ()=>{
 
     return (

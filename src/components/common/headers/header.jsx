@@ -1,8 +1,8 @@
 import {Component, useContext, useEffect, useState} from 'react';
 import React from 'react';
-import '../../css/components/header.css'
-import Logotype from '../../ui/logotype/logotype';
-import {AuthContext} from "../../App";
+import '../../../css/components/header.css'
+import Logotype from '../../../ui/logotype/logotype';
+import {AuthContext} from "../../../App";
 const HeaderMain = () => {
     return (
         <div className="headerWrapper">

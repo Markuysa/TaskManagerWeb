@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "../../css/components/qrModal.css";
-import Base64QRCode from "../common/base64Component.jsx";
+import Base64QRCode from "../common/utils/base64Component.jsx";
 import OtpComponent from "./otpComponent.jsx";
 const QRModal = ({ show, onHide, qrCodeData, onSubmit }) => {
   const handleSubmit = (otp) => {

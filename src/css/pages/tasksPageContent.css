@@ -12,49 +12,49 @@
   display: block;
 }
 
-.tasksPageContent .aside {
-  background: rgba(228, 212, 228, 0.71);
-  width: 15%;
-  height: 100%;
 
-}
+/*.tasksPageContent .tasks_list{*/
+/*  width: 85vw;*/
+/*  padding: 20px;*/
+/*  height: fit-content;*/
+/*  display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-.tasksPageContent .tasks_list{
-  width: 85vw;
-  padding: 20px;
-  height: fit-content;
-  display: flex;
+.tasksPageContent .content {
+    width: 85vw;
+    padding: 20px;
+    display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.tasksPageContent .aside .aside-list {
-  padding: 0;
-  margin: 0;
+.tasksPageContent .content .heading h1{
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: "Gilroy Bold", "Consolas", sans-serif;
+    color: #ab54bf;
 }
 
-.tasksPageContent .aside .aside-list li {
-  padding: 10px 20px;
-  margin-bottom: 10px;
-  background-color: #ddd;
-  color: #333;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.tasksPageContent .content .my_tasks h1{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: "Gilroy Bold", "Consolas", sans-serif;
+    color: #ab54bf;
 }
 
-.tasksPageContent .aside .aside-list li a {
-  text-decoration: none;
-  color: inherit;
+.tasksPageContent .content .my_tasks .table{
+    /*border: 1px solid #888;*/
+    background: #f2e2f3;
+    padding: 10px;
 }
 
-.tasksPageContent .aside .aside-list li:hover {
-  background-color: #333;
-  color: #fff;
+.tasksPageContent .table {
+  width: 50vw;
 }
 
-.tasksPageContent .task-list{
-  max-height: 96vh;
-  overflow-y: auto;
-}
 
 .footer_wrap{
   bottom: 0;

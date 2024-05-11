@@ -7,78 +7,25 @@ import QRModal from '../components/auth/qrModal';
 import React, {Component, useContext, useState} from 'react';
 import {AuthContext} from "../App";
 import {useNavigate} from "react-router-dom";
+import useOtpValidation from "../hooks/auth/useOtpValidation";
+import useSignUp from "../hooks/auth/userSignUp";
 const SignUp = () =>{
-    const navigate = useNavigate();
-    const SIGNUP = "http://localhost:8080/auth/sign_up";
-    const { setIsAuthenticated } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [showQR, setShowQR] = useState(false);
-    const [qrCodeData, setQrCodeData] = useState('');
+    const { handleSignUp, qrCodeData, showQR } = useSignUp();
+    const { handleOtpValidation } = useOtpValidation();
 
     const signUp = (e) => {
         e.preventDefault();
-      
-        const userData = { 
-            username: username, 
-            password: password, 
-            email: email,
-          };
-        const userDataJson = JSON.stringify(userData);
-      
-        fetch(SIGNUP, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },  
-          body:userDataJson
-        })
-        .then((response) => {
-            if (response.status === 200) {
-              response.json().then((data) => {
-                setShowQR(true);
-                setQrCodeData(data.qr);
-              });
-            } else {
-              alert("Ошибка при подготовке к входу в систему. Повторите попытку.");
-            }
-          })          
-          .catch((error) => {
-            alert("Произошла ошибка. Повторите попытку.");
-          });
-    }
+        const userData = { username, password, email };
+        handleSignUp(userData);
+    };
 
     const submitQr = (code) => {
-        const otpData = {
-            username: username,
-            passCode: code
-        };
-        const otpDataJson = JSON.stringify(otpData);
-
-        fetch("http://localhost:8080/auth/validate_otp", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: otpDataJson
-        })
-            .then((response) => {
-                if (response.status === 200) {
-                    setIsAuthenticated(true);
-                    navigate('/tasks');
-                } else {
-                    if (response.status === 400 ){
-                        alert("Неверный OTP. Повторите попытку.");
-                        return;
-                    }
-                    alert("Ошибка при валидации OTP. Повторите попытку.");
-                }
-            })
-            .catch((error) => {
-                alert("Произошла ошибка. Повторите попытку.");
-            });
-    }
+        const otpData = { username, passCode: code };
+        handleOtpValidation(otpData);
+    };
 
     return(
         <div className="login-wrapper">
