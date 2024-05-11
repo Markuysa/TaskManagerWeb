@@ -1,10 +1,10 @@
-import Footer from "../components/footer";
+import Footer from "../components/common/footer";
 import React from 'react';
-import HeaderMain from "../components/header";
-import '../css/main_page.css'
-import LandingPageFirst from "../components/landingPageContent_1";
-import LandingPageSecond from "../components/landingPageContent_2";
-import LandingPageThird from "../components/landingPageContent_3";
+import HeaderMain from "../components/common/header";
+import '../css/pages/main_page.css'
+import LandingPageFirst from "../components/common/landingPageContent_1";
+import LandingPageSecond from "../components/common/landingPageContent_2";
+import LandingPageThird from "../components/common/landingPageContent_3";
 
 const MainPage = () =>{
     const scrollDown = () =>{

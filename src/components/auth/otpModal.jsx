@@ -1,0 +1,18 @@
+import React, { useState } from 'react';
+import "../../css/components/otpModal.css";
+import OtpComponent from './otpComponent';
+const OtpModal = ({ show, handleSubmitOtp }) => {
+    const handleOtpSubmit = (otp) => {
+        handleSubmitOtp(otp);
+    };
+    return (
+        <div className="modal" style={{ display: show ? "block" : "none" }}>
+            <div className="modal-content">
+                <h2>Введите OTP код</h2>
+                <OtpComponent handleSubmitOtp={handleOtpSubmit}></OtpComponent>
+            </div>
+        </div>
+    );
+};
+
+export default OtpModal;

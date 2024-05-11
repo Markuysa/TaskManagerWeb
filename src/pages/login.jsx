@@ -1,9 +1,9 @@
-import '../css/login_page.css'
-import OTPModal from '../components/otpModal.jsx';
-import BlackButton from '../ui/Blackbutton/BlackButton';
+import '../css/pages/login_page.css'
+import OTPModal from '../components/auth/otpModal.jsx';
+import Button from '../ui/button/Button';
 
-import InputFieldForm from '../ui/InputFieldForm/InputFieldForm';
-import Logotype from '../ui/Logotype/Logotype';
+import InputFieldForm from '../ui/inputFieldForm/inputFieldForm';
+import Logotype from '../ui/logotype/logotype';
 import TransparentButton from '../ui/transparentButton/TransparentButton';
 import React, { Component,useState }  from 'react';
 
@@ -18,7 +18,7 @@ const Login = () =>{
     const PREPARE_LOGIN_URL = "http://localhost:8080/auth/prepare_sign_in";
     const FINALIZE_LOGIN_URL = "http://localhost:8080/auth/finalize_sign_in"
 
-    const handleOTP = (e, otpCode) => {
+    const handleOTP = (otpCode) => {
         const userData = { 
             username: username,
             pass_code: otpCode,
@@ -35,7 +35,7 @@ const Login = () =>{
           .then((response) => {
             if (response.status === 200) {
               setOtpModalShow(false);
-              navigate("/");
+              navigate("/tasks");
             } else {
               alert("Ошибка при завершении входа в систему. Повторите попытку.");
             }
@@ -100,14 +100,14 @@ const Login = () =>{
                         <a href="#"><span>Forgot password</span></a>
                     </div>
                     <div className="form__buttonsBlock">
-                        <BlackButton onClick={loginUser}>Sign in</BlackButton>
+                        <Button onClick={loginUser}>Sign in</Button>
                         <p>or</p>
                         <TransparentButton>Sign in with Google</TransparentButton>
                     </div>
                 </form>
                 <span className='signUpSpan'>Don't fave an account? <a href='/signUp'>Sign up here</a></span>
             </div>
-            {modalShow ? <OTPModal handleSubmitOtp={handleOTP}/> : <></>}
+            <OTPModal handleSubmitOtp={handleOTP} show={modalShow}/>
         </div>
     );
 

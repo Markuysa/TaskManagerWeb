@@ -1,0 +1,49 @@
+@import url("../media/resetFile.css");
+@import url("../media/fonts.css");
+.tasksPageContent {
+  background: rgba(228, 212, 228, 0.71);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: row;
+}
+
+.tasksPageContent .aside {
+  background: rgba(228, 212, 228, 0.71);
+  width: 15%;
+  height: 100%;
+}
+
+.tasksPageContent .tasks_list{
+  width: 85vw;
+  padding: 20px;
+  /*height: fit-content;*/
+  margin-left: 15%; /* add left margin */
+}
+
+.tasksPageContent .aside .aside-list {
+  padding: 0;
+  margin: 0;
+}
+
+.tasksPageContent .aside .aside-list li {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  background-color: #ddd;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tasksPageContent .aside .aside-list li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tasksPageContent .aside .aside-list li:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.tasksPageContent .task-list{
+}

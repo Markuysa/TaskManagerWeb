@@ -1,0 +1,18 @@
+
+@import url("../../css/media/fonts.css");
+.inputFieldForm {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .input_field_form {
+    border: 1px solid rgb(29, 102, 249);
+    border-radius: 8px;
+    width: 100%;
+    height: 42px;
+    background: #ffffffc7;
+    font-family: "Gilroy Light";
+    padding-left: 15px;
+    color: rgb(25, 10, 34);
+  }

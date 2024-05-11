@@ -1,19 +1,19 @@
-import '../css/signUp.css'
-import Button from '../ui/Blackbutton/BlackButton';
-import InputField from '../ui/InputField/InputFiels';
-import InputFieldForm from '../ui/InputFieldForm/InputFieldForm';
-import Logotype from '../ui/Logotype/Logotype';
+import '../css/pages/signUp.css'
+import Button from '../ui/button/Button';
+import InputFieldForm from '../ui/inputFieldForm/inputFieldForm';
+import Logotype from '../ui/logotype/logotype';
 import TransparentButton from '../ui/transparentButton/TransparentButton';
-import QRModal from '../components/qrModal';
-import React, { Component, useState }  from 'react';
-import BlackButton from '../ui/Blackbutton/BlackButton';
+import QRModal from '../components/auth/qrModal';
+import React, {Component, useContext, useState} from 'react';
+import {AuthContext} from "../App";
+import {useNavigate} from "react-router-dom";
 const SignUp = () =>{
+    const navigate = useNavigate();
     const SIGNUP = "http://localhost:8080/auth/sign_up";
-
+    const { setIsAuthenticated } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-
     const [showQR, setShowQR] = useState(false);
     const [qrCodeData, setQrCodeData] = useState('');
 
@@ -49,6 +49,37 @@ const SignUp = () =>{
           });
     }
 
+    const submitQr = (code) => {
+        const otpData = {
+            username: username,
+            passCode: code
+        };
+        const otpDataJson = JSON.stringify(otpData);
+
+        fetch("http://localhost:8080/auth/validate_otp", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: otpDataJson
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    setIsAuthenticated(true);
+                    navigate('/tasks');
+                } else {
+                    if (response.status === 400 ){
+                        alert("Неверный OTP. Повторите попытку.");
+                        return;
+                    }
+                    alert("Ошибка при валидации OTP. Повторите попытку.");
+                }
+            })
+            .catch((error) => {
+                alert("Произошла ошибка. Повторите попытку.");
+            });
+    }
+
     return(
         <div className="login-wrapper">
             <div className="login-logotype">
@@ -76,17 +107,15 @@ const SignUp = () =>{
                     </div>
                     </div>
                     <div className="form__buttonsBlock">
-                        <BlackButton onClick={signUp}>Register</BlackButton>
+                        <Button onClick={signUp}>Register</Button>
                         <p>or</p>
                         <TransparentButton>Sign up with Google</TransparentButton>
                     </div>
                 </form>
                 <span className='signUpSpan'>Already have an account? <a href='/login'>Sign in here</a></span>
             </div>
-            <QRModal show={showQR} onHide={(e) => {}} onSubmit={(e) => {}} qrCodeData={qrCodeData}/>
+            <QRModal show={showQR} onHide={(e) => {}} onSubmit={submitQr} qrCodeData={qrCodeData}/>
         </div>
-        
-
     );
 
 }

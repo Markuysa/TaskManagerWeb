@@ -1,0 +1,134 @@
+@import url("../media/resetFile.css");
+@import url("../media/fonts.css");
+html {
+  box-sizing: border-box;
+}
+
+.header__navigation__list_hidden li:hover {
+  background-color: rgb(175, 159, 159);
+  transition: 0.8s;
+}
+
+.header {
+  width: 100%;
+  position: absolute;
+  height: 5em;
+  top: 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header .header_options_list .options_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header .header_options_list .options_list a {
+  color: rgb(255, 242, 242);
+  font-size: 18px;
+}
+.header .header_options_list .options_list li {
+  margin: 0 50px 0;
+  font-family: "Gilroy Bold", "Consolas", serif;
+}
+.header .header_options_list .options_list li:hover {
+  transform: scale(1.1);
+  transition: 0.6s;
+}
+.header .header_account_drop .header_account {
+  font-family: "Gilroy Bold", serif;
+  color: rgb(253, 253, 253);
+  display: block;
+}
+.header .header_account_drop .header_account .icon {
+  background-image: url("../../media/img/icons/icons8-user-20.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 25px; /* Or size of icon + spacing */
+}
+
+.header .header_account__dropdownMenu ul {
+  padding-left: 0;
+}
+.header .header_account__dropdownMenu ul a {
+  color: white;
+}
+.header .header_account__dropdownMenu p {
+  padding: 10px;
+  margin-top: 5px;
+}
+.header .header_account__dropdownMenu li {
+  padding: 10px;
+}
+.header .header_account__dropdownMenu li:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+.header .header_logo {
+  font-family: "Gilroy Bold", "Times New Roman", serif;
+  font-size: 32px;
+  color: rgb(239, 227, 227);
+}
+
+.burger__icon {
+  visibility: hidden;
+}
+
+.mainHeaderBurger {
+  display: none;
+}
+
+.hiddenLogotype {
+  display: none;
+  font-family: "Gilroy Bold", "Times New Roman";
+  font-size: 30px;
+}
+
+.element::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.header .header_account_drop {
+  cursor: pointer;
+}
+.header .header_account_drop .header_account__dropdownMenu.active {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+
+@media screen and (max-width: 810px) {
+  .header_logo {
+    display: none;
+  }
+  .mainHeaderBurger {
+    display: block;
+  }
+  .hiddenLogotype {
+    display: block;
+    transform: translate(-10px, 10px);
+    visibility: visible;
+    width: 50px;
+    height: 50px;
+  }
+  .header_options_list {
+    display: none;
+  }
+  .firstPage__title .firstPage_title_descriprion h1 {
+    font-size: 45px;
+  }
+  .firstPage__title .firstPage_title__header span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 811px) {
+  .header__navigation__list_hidden {
+    display: none;
+  }
+}
