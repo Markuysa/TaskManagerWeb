@@ -1,0 +1,20 @@
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: rgba(227, 223, 227, 0);
+    color: #333;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.coming-soon h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.coming-soon p {
+    font-size: 1.2em;
+}

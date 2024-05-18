@@ -1,5 +1,5 @@
-@import url("../media/resetFile.css");
-@import url("../media/fonts.css");
+@import url("../../media/resetFile.css");
+@import url("../../media/fonts.css");
 html {
   box-sizing: border-box;
 }
@@ -42,7 +42,7 @@ html {
   display: block;
 }
 .header .header_account_drop .header_account .icon {
-  background-image: url("../../media/img/icons/icons8-user-20.png");
+  background-image: url("../../../media/img/icons/icons8-user-20.png");
   background-position: left center;
   background-repeat: no-repeat;
   padding-left: 25px; /* Or size of icon + spacing */

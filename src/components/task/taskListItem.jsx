@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import '../../css/components/taskItem.css'
+import '../../css/components/task/taskItem.css'
 import { FaBullseye } from 'react-icons/fa'; // import the target icon
 import { useTaskDetails } from '../../hooks/fetch/useTaskDetails'
 import ModalDetails from '../common/utils/modalDetails.jsx';

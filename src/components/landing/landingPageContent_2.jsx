@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import "../../css/components/landingPageContent_2.css"
+import "../../css/components/landing/landingPageContent_2.css"
 const LandingPageSecond = ({page})=>{
     return (
         <div className="page-wrapper">

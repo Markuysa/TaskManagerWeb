@@ -3,7 +3,7 @@ import "../../../css/components/utils/modalTask.css"
 import {postComment} from "../../../api/fetch";
 import Comment from "../../task/comment";
 
-const ModalDetails = ({ isOpen, onRequestClose, renderer, renderObject }) => {
+const ModalForm = ({ isOpen, onRequestClose, renderer, onFormSubmit }) => {
     if (!isOpen) {
         return null;
     }
@@ -12,8 +12,8 @@ const ModalDetails = ({ isOpen, onRequestClose, renderer, renderObject }) => {
         <div className="modal">
             <div className="modal-content">
                 <button className="close_button" onClick={(event) => onRequestClose(event)}>Close</button>
-                {renderObject ? (
-                    renderer(renderObject)
+                {renderer ? (
+                    renderer(onFormSubmit)
                 ) : (
                     <div>Loading...</div>
                 )}
@@ -22,4 +22,4 @@ const ModalDetails = ({ isOpen, onRequestClose, renderer, renderObject }) => {
     );
 };
 
-export default ModalDetails;
+export default ModalForm;

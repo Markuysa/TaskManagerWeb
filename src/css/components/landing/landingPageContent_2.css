@@ -1,5 +1,5 @@
-@import url("../media/resetFile.css");
-@import url("../media/fonts.css");
+@import url("../../media/resetFile.css");
+@import url("../../media/fonts.css");
 .page-wrapper {
   height: 100vh;
   z-index: 1000;
@@ -35,7 +35,7 @@
   padding: 50px;
 }
 .page-wrapper .page-wrapper__content .page-wrapper-content__text .text__header_top {
-  background-image: url("../../media/img/Rectangle 2.1.png");
+  background-image: url("../../../media/img/Rectangle 2.1.png");
   background-position: left center;
   background-repeat: no-repeat;
   font-size: 18px;
@@ -57,11 +57,11 @@
 .page-wrapper .page-wrapper__content .page-wrapper-content__text .text__header_description {
   font-size: 18px;
   line-height: 32px;
-  font-family: "Gilroy Bold";
+  font-family: "Gilroy Light";
   color: white;
 }
 .page-wrapper .page-wrapper__content .page-wrapper-content__text .text__header_readMore {
-  background-image: url("../../media/img/arrowLeft.png");
+  background-image: url("../../../media/img/arrowLeft.png");
   background-position: right center;
   background-repeat: no-repeat;
   font-size: 18px;
@@ -78,27 +78,27 @@
 }
 
 .page-wrapper-content__image.first {
-  background: url("../../media/img/contentImages/2.svg") no-repeat center center;
+  background: url("../../../media/img/contentImages/2.svg") no-repeat center center;
 }
 
 .page-wrapper-content__image.second {
-  background: url("../../media/img/contentImages/2m.svg") no-repeat center center;
+  background: url("../../../media/img/contentImages/2m.svg") no-repeat center center;
 }
 
 .page-wrapper-content__image.third {
-  background: url("../../media/img/contentImages/3.svg") no-repeat center center;
+  background: url("../../../media/img/contentImages/3.svg") no-repeat center center;
 }
 
 .page-wrapper-content__numberImage.first {
-  background: url("../../media/img/icons/1.png") no-repeat center center;
+  background: url("../../../media/img/icons/1.png") no-repeat center center;
 }
 
 .page-wrapper-content__numberImage.second {
-  background: url("../../media/img/icons/2.png") no-repeat center center;
+  background: url("../../../media/img/icons/2.png") no-repeat center center;
 }
 
 .page-wrapper-content__numberImage.third {
-  background: url("../../media/img/icons/3.png") no-repeat center center;
+  background: url("../../../media/img/icons/3.png") no-repeat center center;
 }
 
 .page-wrapper-content__image {

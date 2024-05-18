@@ -9,7 +9,7 @@ import React, { Component,useState }  from 'react';
 
 import { useNavigate } from "react-router-dom";
 
-const Login = () =>{
+const Login = ({ setAuth }) =>{
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -35,6 +35,7 @@ const Login = () =>{
           .then((response) => {
             if (response.status === 200) {
               setOtpModalShow(false);
+              setAuth(true);
               navigate("/tasks");
             } else {
               alert("Ошибка при завершении входа в систему. Повторите попытку.");

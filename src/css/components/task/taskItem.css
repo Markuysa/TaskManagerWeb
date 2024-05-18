@@ -1,5 +1,5 @@
-@import url("../media/resetFile.css");
-@import url("../media/fonts.css");
+@import url("../../media/resetFile.css");
+@import url("../../media/fonts.css");
 
 .task-info {
     display: flex;

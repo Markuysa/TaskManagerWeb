@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../css/components/header_content.css'
+import '../../../css/components/header/header_content.css'
 
 const HeaderContent = ({ username }) => {
     return (

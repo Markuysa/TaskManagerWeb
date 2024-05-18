@@ -1,0 +1,32 @@
+@import url("../../media/resetFile.css");
+@import url("../../media/fonts.css");
+.pageContent .content .heading h1{
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: "Gilroy Bold", "Consolas", sans-serif;
+    color: #ab54bf;
+}
+
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageContent .content .my_tasks h1{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: "Gilroy Bold", "Consolas", sans-serif;
+    color: #ab54bf;
+}
+
+.pageContent .content .my_tasks .table{
+    background: #f2e2f3;
+    padding: 10px;
+}
+
+.pageContent .table {
+    width: 50vw;
+}

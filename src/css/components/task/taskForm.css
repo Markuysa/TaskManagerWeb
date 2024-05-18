@@ -1,0 +1,50 @@
+/* src/css/components/task/taskForm.css */
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.task-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.task-form button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.task-form button:hover {
+    background-color: #0056b3;
+}
+
+.form-input,
+.form-select,
+.form-button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-button:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+.form-button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}

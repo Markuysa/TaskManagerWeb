@@ -1,0 +1,37 @@
+.table {
+    font-family: 'Gilroy Light', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    overflow-y: scroll; /* Make the table scrollable */
+    height: 500px; /* Set the height to 500px */
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #a483e6;
+    color: white;
+}
+
+.table tr {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.table tr.loaded {
+    opacity: 1;
+}
+
+.table-container {
+    height: 500px;
+    overflow-y: auto;
+}

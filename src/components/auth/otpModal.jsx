@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../css/components/otpModal.css";
+import "../../css/components/utils/otpModal.css";
 import OtpComponent from './otpComponent';
 const OtpModal = ({ show, handleSubmitOtp }) => {
     const handleOtpSubmit = (otp) => {

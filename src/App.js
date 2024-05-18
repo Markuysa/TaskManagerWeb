@@ -4,9 +4,11 @@ import SignUp from './pages/signUp';
 import MainPage from './pages/main_page';
 import GetIntoPage from './pages/login';
 import { Navigate } from "react-router-dom";
-import TaskListPage from './pages/content/taskListPage';
 import {createContext, useState} from "react";
-import CommandsListPage from "./pages/content/commandsListPage";
+import ContentPage from "./pages/contentPage";
+import TasksContent from "./components/content/tasksContent";
+import ComingSoonContent from "./components/content/comingSoon";
+import TeamPageContent from "./components/content/teamContent";
 export const AuthContext = createContext();
 
 function App() {
@@ -17,14 +19,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route exact path="/"  element={<MainPage/>}/>
-            <Route path="/login"  element={<Login/>}/>
+            <Route path="/login"  element={<Login setAuth = {setIsAuthenticated} />}/>
             <Route
                 path="/get_into"
                 element={isAuthenticated ? <GetIntoPage/> : <Navigate replace to="/login" />}
             />
             <Route path="/signUp"  element={<SignUp/>}/>
-            <Route path="/tasks" element={<TaskListPage />} />
-            <Route path="/commands" element={<CommandsListPage />} />
+            <Route path="/tasks" element={<ContentPage contentComponent={TasksContent}/>} />
+            <Route path="/team" element={<ContentPage contentComponent={TeamPageContent}/>} />
+            <Route path="/coming" element={<ContentPage contentComponent={ComingSoonContent}/>} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

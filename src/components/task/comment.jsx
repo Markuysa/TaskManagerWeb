@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/components/comment.css";
+import "../../css/components/task/comment.css";
 
 const Comment = ({ comment }) => {
     return (

@@ -1,7 +1,7 @@
 
 
 import React, { Component }  from 'react';
-import '../../../css/components/footer.css'
+import '../../../css/components/footer/footer.css'
 import Logotype from '../../../ui/logotype/logotype';
 const Footer = ()=>{
 
