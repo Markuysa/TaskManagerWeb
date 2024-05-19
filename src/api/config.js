@@ -17,4 +17,5 @@ export const ENDPOINTS = {
     TEAM_MEMBERS: '/client/team/members',
     STATUS: '/client/lists/status',
     CATEGORY: '/client/lists/category',
+    LINK_TG: '/client/link_tg',
 };

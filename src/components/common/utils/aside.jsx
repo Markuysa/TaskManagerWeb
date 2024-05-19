@@ -22,7 +22,7 @@ const AsideMenu = () => {
                 <ul className="aside-list-general">
                     <li><Link to="/team" style={location.pathname === "/team" ? activeLinkStyle : linkStyle}><FontAwesomeIcon icon={faCog} style={iconStyle} /> Team</Link></li>
                     <li><Link to="/tasks" style={location.pathname === "/tasks" ? activeLinkStyle : linkStyle}><FontAwesomeIcon icon={faTasks} style={iconStyle} /> My tasks</Link></li>
-                    <li><Link to="/coming" style={location.pathname === "/coming" ? activeLinkStyle : linkStyle}><FontAwesomeIcon icon={faCog} style={iconStyle} /> Settings</Link></li>
+                    <li><Link to="/settings" style={location.pathname === "/settings" ? activeLinkStyle : linkStyle}><FontAwesomeIcon icon={faCog} style={iconStyle} /> Settings</Link></li>
                     <li><Link to="/coming" style={location.pathname === "/coming" ? activeLinkStyle : linkStyle}><FontAwesomeIcon icon={faInbox} style={iconStyle} /> Inbox</Link></li>
                     <li><Link to="/coming" style={location.pathname === "/coming" ? activeLinkStyle : linkStyle}><FontAwesomeIcon icon={faHome} style={iconStyle} /> Home</Link></li>
                 </ul>

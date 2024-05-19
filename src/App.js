@@ -9,6 +9,7 @@ import ContentPage from "./pages/contentPage";
 import TasksContent from "./components/content/tasksContent";
 import ComingSoonContent from "./components/content/comingSoon";
 import TeamPageContent from "./components/content/teamContent";
+import SettingsContent from "./components/content/settingsContent";
 export const AuthContext = createContext();
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/tasks" element={<ContentPage contentComponent={TasksContent}/>} />
             <Route path="/team" element={<ContentPage contentComponent={TeamPageContent}/>} />
             <Route path="/coming" element={<ContentPage contentComponent={ComingSoonContent}/>} />
+            <Route path="/settings" element={<ContentPage contentComponent={SettingsContent}/>} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

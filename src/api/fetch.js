@@ -59,6 +59,12 @@ export const fetchTeamTasks = () => {
         .then(response => response.data.tasks);
 };
 
+export const fetchTgLink = () => {
+    return axios.post(`${BASE_URL}${ENDPOINTS.LINK_TG}`, { sessionToken: getSessionToken() })
+        .then(response => response.data.link);
+};
+
+
 export const createTask = (task) => {
     task.sessionToken = getSessionToken();
     return axios.post(`${BASE_URL}${ENDPOINTS.CREATE_TASK}`, task)
