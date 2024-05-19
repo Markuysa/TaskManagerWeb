@@ -8,6 +8,7 @@ import TransparentButton from '../ui/transparentButton/TransparentButton';
 import React, { Component,useState }  from 'react';
 
 import { useNavigate } from "react-router-dom";
+import {finalizeLogin, prepareLogin} from "../api/auth";
 
 const Login = ({ setAuth }) =>{
     const navigate = useNavigate();
@@ -15,65 +16,39 @@ const Login = ({ setAuth }) =>{
     const [password, setPassword] = useState('');
     const [modalShow, setOtpModalShow] = useState(false);
 
-    const PREPARE_LOGIN_URL = "http://localhost:8080/auth/prepare_sign_in";
-    const FINALIZE_LOGIN_URL = "http://localhost:8080/auth/finalize_sign_in"
-
     const handleOTP = (otpCode) => {
-        const userData = { 
-            username: username,
-            pass_code: otpCode,
-          };
-        const userDataJson = JSON.stringify(userData);
-      
-        fetch(FINALIZE_LOGIN_URL, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },  
-          body:userDataJson
-        })
-          .then((response) => {
-            if (response.status === 200) {
-              setOtpModalShow(false);
-              setAuth(true);
-              navigate("/tasks");
-            } else {
-              alert("Ошибка при завершении входа в систему. Повторите попытку.");
-            }
-          })
-          .catch((error) => {
-            alert("Произошла ошибка. Повторите попытку.");
-          });
-      }
-      
+        finalizeLogin(username, otpCode)
+            .then((response) => {
+                if (response.status === 200) {
+                    localStorage.setItem('session', response.data.sessionToken);
+                    setOtpModalShow(false);
+                    setAuth(true);
+                    navigate("/tasks");
+                } else {
+                    alert("Ошибка при завершении входа в систему. Повторите попытку.");
+                }
+            })
+            .catch((error) => {
+                alert("Произошла ошибка. Повторите попытку.");
+            });
+    };
 
-      const loginUser = (e) => {
+    const loginUser = (e) => {
         e.preventDefault();
-      
-        const userData = { 
-            username: username, 
-            password: password, 
-          };
-        const userDataJson = JSON.stringify(userData);
-      
-        fetch(PREPARE_LOGIN_URL, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },  
-          body:userDataJson
-        })
-          .then((response) => {
-            if (response.status === 200) {
-              setOtpModalShow(true);
-            } else {
-              alert("Ошибка при подготовке к входу в систему. Повторите попытку.");
-            }
-          })
-          .catch((error) => {
-            alert("Произошла ошибка. Повторите попытку.");
-          });
-      };
+
+        prepareLogin(username, password)
+            .then((response) => {
+                if (response.status === 200) {
+                    localStorage.setItem('access', response.data.sessionToken);
+                    setOtpModalShow(true);
+                } else {
+                    alert("Ошибка при подготовке к входу в систему. Повторите попытку.");
+                }
+            })
+            .catch((error) => {
+                alert("Произошла ошибка. Повторите попытку.");
+            });
+    };
       
 
     return(

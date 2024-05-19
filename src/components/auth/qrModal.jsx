@@ -11,12 +11,11 @@ const QRModal = ({ show, onHide, qrCodeData, onSubmit }) => {
     <div className="modal" style={{ display: show ? "block" : "none" }}>
       <div className="modal-content">
         <h2>Scan QR-code</h2>
-        <Base64QRCode base64Data={qrCodeData} />
-        <p>
-          Input the OTP from authentication app
-        </p>
+        <div className="image">
+          <Base64QRCode base64Data={qrCodeData} />
+        </div>
         <br />
-        <OtpComponent handleSubmitOtp={handleSubmit}/> 
+        <OtpComponent handleSubmitOtp={handleSubmit}/>
       </div>
     </div>
   );

@@ -12,12 +12,18 @@ import TaskRenderer from "../task/taskRenderer";
 import ModalDetails from "../common/utils/modalDetails";
 import TaskFormRenderer from "../task/craeteTaskFormRenderer";
 import ModalForm from "../common/utils/modalForm";
+import * as time from "@testing-library/user-event/dist/utils";
 
 const TasksContent = () => {
     const tasks = useTasks();
     const username = useUsername();
     const iconStyle = { color: 'black' };
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const createTaskSubmit = (task) => {
+        createTask(task);
+        setModalIsOpen(false);
+    }
 
     return (
         <div>
@@ -27,13 +33,13 @@ const TasksContent = () => {
             {modalIsOpen && <ModalForm
                 isOpen={modalIsOpen}
                 onRequestClose={() => setModalIsOpen(false)}
-                renderer={(props) => <TaskFormRenderer {...props} onSubmit={createTask}/>}
+                renderer={(props) => <TaskFormRenderer {...props} onSubmit={createTaskSubmit}/>}
             />}
             <div className="my_tasks">
                 <div className="heading">
                     <span> <h1><FontAwesomeIcon className="icon" icon={faTasks}
                                                 style={iconStyle}/> My tasks</h1> </span>
-                    <button onClick={() => setModalIsOpen(true)}>Add New Task</button>
+                    <button className="buttonAddTask" onClick={() => setModalIsOpen(true)}>Add New Task</button>
                 </div>
                 <div className="table">
                     <TableList items={tasks} renderItem={(item) => <TaskItem task={item}/>}/>

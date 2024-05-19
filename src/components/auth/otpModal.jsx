@@ -6,8 +6,8 @@ const OtpModal = ({ show, handleSubmitOtp }) => {
         handleSubmitOtp(otp);
     };
     return (
-        <div className="modal" style={{ display: show ? "block" : "none" }}>
-            <div className="modal-content">
+        <div className="otpModal" style={{ display: show ? "block" : "none" }}>
+            <div className="otp-modal-content">
                 <h2>Введите OTP код</h2>
                 <OtpComponent handleSubmitOtp={handleOtpSubmit}></OtpComponent>
             </div>

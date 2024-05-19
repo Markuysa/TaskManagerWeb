@@ -1,167 +1,92 @@
-// api/fetch.js
 import {BASE_URL, ENDPOINTS} from './config';
 
-export const fetchUsername = () => {
-    return fetch(`${BASE_URL}${ENDPOINTS.CLIENT_DETAILS}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+import axios from 'axios';
+
+const getSessionToken = () => localStorage.getItem('session');
+
+let alertShown = false;
+
+axios.interceptors.response.use(function (response) {
+    // If the response is good, just pass it back
+    return response;
+}, function (error) {
+    // If we get a 401, redirect to the login page and alert the user
+    if (error.response && error.response.status === 401) {
+        if (!alertShown) {
+            window.alert('Сессия истекла, пожалуйста, войдите снова');
+            alertShown = true;
         }
-    })
-        .then(response => response.json())
-        .then(data => data.username);
+        window.location.href = '/login';
+    }
+
+    // If it's another error, just throw it back
+    return Promise.reject(error);
+});
+
+export const fetchUsername = () => {
+    return axios.post(`${BASE_URL}${ENDPOINTS.CLIENT_DETAILS}`, { sessionToken: getSessionToken() })
+        .then(response => response.data.username);
 };
 
 export const fetchTasks = () => {
-    return fetch(`${BASE_URL}${ENDPOINTS.TASKS_LIST}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({  }) // replace with your data for the request
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('HTTP Error: ' + response.status);
-            }
-        })
-        .then(data => data.tasks);
+    return axios.post(`${BASE_URL}${ENDPOINTS.TASKS_LIST}`, { sessionToken: getSessionToken() })
+        .then(response => response.data.tasks);
 };
 
-export const fetchTaskDetails = async (taskId) => {
-    try {
-        const response = await fetch(`http://localhost:8080/client/tasks/details/${taskId}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('There was an error!', error);
-    }
+export const fetchTaskDetails = (taskId) => {
+    return axios.post(`${BASE_URL}${ENDPOINTS.TASK_DETAILS}/${taskId}`, { sessionToken: getSessionToken() })
+        .then(response => response.data)
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
 };
 
 export const fetchTeamDetails = () => {
-    return fetch(`http://127.0.0.1:8080/client/team/details`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({  })
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('HTTP Error: ' + response.status);
-            }
-        });
+    return axios.post(`${BASE_URL}${ENDPOINTS.TEAM_DETAILS}`, { sessionToken: getSessionToken() })
+        .then(response => response.data);
 };
 
-export const postComment = async (taskId, message) => {
-    try {
-        const response = await fetch(`http://localhost:8080/client/tasks/comment`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ task_id: taskId, comment: { message: message } })
+export const postComment = (taskId, message) => {
+    return axios.post(`${BASE_URL}${ENDPOINTS.POST_COMMENT}`, { task_id: taskId, comment: { message: message }, sessionToken: getSessionToken() })
+        .then(response => response.data)
+        .catch(error => {
+            console.error('There was an error!', error);
         });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('There was an error!', error);
-    }
 };
 
 export const fetchTeamTasks = () => {
-    return fetch(`http://127.0.0.1:8080/client/team/tasks/list`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({  })
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('HTTP Error: ' + response.status);
-            }
-        })
-        .then(data => data.tasks);
+    return axios.post(`${BASE_URL}${ENDPOINTS.TEAM_TASKS}`, { sessionToken: getSessionToken() })
+        .then(response => response.data.tasks);
 };
 
-// src/api/api.js
-
 export const createTask = (task) => {
-    return fetch('http://127.0.0.1:8080/client/tasks/create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(task)
-    }).then(response => {
-        if (!response.ok) {
-            alert("Could not create task")
-        }
-        return response.json();
-    });
+    task.sessionToken = getSessionToken();
+    return axios.post(`${BASE_URL}${ENDPOINTS.CREATE_TASK}`, task)
+        .then(response => {
+            if (response.status !== 200) {
+                alert("Could not create task")
+            }
+            return response.data;
+        });
 };
 
 export const fetchTeamMembers = (teamId) => {
-    return fetch('http://localhost:8080/client/team/members', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            commandID: teamId
-        })
+    return axios.post(`${BASE_URL}${ENDPOINTS.TEAM_MEMBERS}`, {
+        commandID: teamId,
+        sessionToken: getSessionToken()
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
+        .then(response => response.data)
         .catch(error => {
             console.error('There was an error!', error);
         });
 };
 
 export const fetchStatus = () => {
-    return fetch(`http://127.0.0.1:8080/client/lists/status`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('HTTP Error: ' + response.status);
-            }
-        })
+    return axios.post(`${BASE_URL}${ENDPOINTS.STATUS}`, { sessionToken: getSessionToken() })
+        .then(response => response.data);
 };
 
 export const fetchCategory = () => {
-    return fetch(`http://127.0.0.1:8080/client/lists/category`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('HTTP Error: ' + response.status);
-            }
-        })
+    return axios.post(`${BASE_URL}${ENDPOINTS.CATEGORY}`, { sessionToken: getSessionToken()})
+        .then(response => response.data);
 };

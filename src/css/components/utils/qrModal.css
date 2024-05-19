@@ -12,21 +12,27 @@
   }
   
   .modal-content {
-    background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
-    height: fit-content;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color:#ffffff;
     font-family: 'Gilroy Bold', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
   }
-  
+
   .modal-content h2 {
     text-align: center;
   }
-  
+
+  .image{
+    display: flex;
+    justify-content: center;
+
+  }
   .modal-content p {
     text-align: center;
   }

@@ -3,7 +3,7 @@ import {fetchTeamDetails, fetchTeamMembers} from '../../api/fetch.js';
 
 
 export const useTeamMembersSync = () => {
-    const [members, setMembers] = useState([]);
+    const [members, setMembers] = useState(null);
 
     useEffect(() => {
         const fetchMembers = async () => {

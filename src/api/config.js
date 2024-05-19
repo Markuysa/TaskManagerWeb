@@ -1,9 +1,12 @@
-// api/config.js
+
 export const BASE_URL = 'http://api.tasky.tech';
+// export const BASE_URL = 'http://localhost:8080';
 
 export const ENDPOINTS = {
     SIGN_UP: '/auth/sign_up',
     VALIDATE_OTP: '/auth/validate_otp',
+    PREPARE_SIGN_IN: '/auth/prepare_sign_in',
+    FINALIZE_SIGN_IN: '/auth/finalize_sign_in',
     CLIENT_DETAILS: '/client/details',
     TASKS_LIST: '/client/tasks/list',
     TASK_DETAILS: '/client/tasks/details',

@@ -8,6 +8,7 @@ const TeamMembers = ({ teamId }) => {
     const members = useTeamMembers(teamId);
     return (
         <div className="team-members">
+            <h1>Участники команды</h1>
             <button className="scroll-button left">&lt;</button>
             <div className="members-container">
                 {members.map(member => (

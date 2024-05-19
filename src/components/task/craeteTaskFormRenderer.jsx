@@ -16,7 +16,7 @@ const TaskFormRenderer = ({ onSubmit }) => {
         deadline: 0,
         status: 0,
         description: '',
-        participant_id: 0,
+        participant_id: teamMembers ? teamMembers[0].id : 0,
         sprint: 1
     });
 
@@ -65,7 +65,7 @@ const TaskFormRenderer = ({ onSubmit }) => {
                     ))}
                 </select>
             )}
-            <input name="sprint" onChange={handleInputChange} placeholder="Sprint" className="form-input" />
+            {/*<input name="sprint" onChange={handleInputChange} placeholder="Sprint" className="form-input" />*/}
             <button type="submit" className="form-button">Create Task</button>
         </form>
     );

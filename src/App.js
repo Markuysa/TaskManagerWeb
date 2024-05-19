@@ -13,7 +13,6 @@ export const AuthContext = createContext();
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
       <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
         <BrowserRouter>
